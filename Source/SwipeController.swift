@@ -45,6 +45,9 @@ class SwipeController: NSObject {
     lazy var panGestureRecognizer: UIPanGestureRecognizer = {
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
         gesture.delegate = self
+        if #available(iOS 13.4, *) {
+            gesture.allowedScrollTypesMask = .continuous
+        }
         return gesture
     }()
     
